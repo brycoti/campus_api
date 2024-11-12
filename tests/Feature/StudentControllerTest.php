@@ -138,9 +138,7 @@ class StudentControllerTest extends TestCase
     public function test_it_can_not_create_a_student(): void
     {
         // Crear un estudiante vacio
-        $student = [
-
-        ];
+        $student = [];
 
         $response = $this->postJson('/api/student', $student);
 

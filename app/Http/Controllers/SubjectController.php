@@ -68,6 +68,14 @@ class SubjectController extends Controller
         }
 
         $subject->name = $request->name;
+
+           // Validar que el año sea uno de los valores permitidos
+           if (!in_array($request->year, ['1r', '2n', '3r', '4t'])) {
+            return response()->json([
+                'message' => 'El valor de curso debe ser uno de los siguientes: 1r, 2n, 3r o 4t.'
+            ], 400);
+        }
+        
         $subject->year = $request->year;
 
         $subject->save();
