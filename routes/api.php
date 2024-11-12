@@ -20,7 +20,7 @@ Route::controller(StudentController::class)->group(function () {
     Route::delete('/student/{student}', 'destroy');
 });
 
-Route::controller(StudentController::class)->group(function () {
+Route::controller(SubjectController::class)->group(function () {
     Route::get('/subjects', 'index');
     Route::get('/subject/{subject}', 'show');
     Route::post('/subject', 'store');
@@ -29,5 +29,13 @@ Route::controller(StudentController::class)->group(function () {
 });
 
 Route::controller(MarkController::class)->group(function () {
-    Route::get('/marks', 'index');
+    Route::get('marks', 'index');
+    Route::get('mark/{mark}', 'show');
+    Route::post('marks','store');
+    Route::get('marksAvgByStudent/{student}',  'getAvgMarksByStudent');
+    Route::get('marksByStudent/{student}', 'getMarksByStudent');
+    Route::get('allMarksAvg', 'getAllAvgMarks');
+    Route::get('marksAvgBySubject/{subject}', 'getAvgMarksBySubject');
+    Route::put('mark/{mark}', 'update');
+    Route::delete('mark/{mark}', 'destroy');
 });
