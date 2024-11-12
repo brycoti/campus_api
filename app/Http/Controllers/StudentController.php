@@ -50,7 +50,7 @@ class StudentController extends Controller
         $student->save();
 
         return response()->json([
-           'message' => 'Student created succesfully',
+           'message' => 'Estudiante creado exitosamente',
            'student' => $student
         ], 201);
     }
