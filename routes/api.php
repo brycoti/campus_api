@@ -31,7 +31,7 @@ Route::controller(SubjectController::class)->group(function () {
 Route::controller(MarkController::class)->group(function () {
     Route::get('marks', 'index');
     Route::get('mark/{mark}', 'show');
-    Route::post('marks','store');
+    Route::post('mark','store');
     Route::get('marksAvgByStudent/{student}',  'getAvgMarksByStudent');
     Route::get('marksByStudent/{student}', 'getMarksByStudent');
     Route::get('allMarksAvg', 'getAllAvgMarks');

@@ -19,7 +19,7 @@ class MarkController extends Controller
             return response()->json([
                 'message' => 'No se encontraron notas.',
                 'data' => []
-            ], 200);
+            ], 404);
         }
 
         return response()->json($marks);
@@ -49,6 +49,19 @@ class MarkController extends Controller
             'subject_id' => 'required|exists:subjects,id',
             'mark' => 'required|numeric|min:0|max:10',
         ]);
+
+
+        if (!Student::find($request->student_id)) {
+            return response()->json([
+                'message' => 'Estudiante no encontrado',
+            ], 404);
+        }
+
+        if (!Subject::find($request->subject_id)) {
+            return response()->json([
+                'message' => 'Asignatura no encontrada',
+            ], 404);
+        }
 
         $mark = Mark::updateOrCreate(
             ['student_id' => $request->student_id, 'subject_id' => $request->subject_id],
@@ -125,6 +138,12 @@ class MarkController extends Controller
         if (!$mark) {
             return response()->json([
                 'message' => 'Nota no encontrada',
+            ], 404);
+        }
+
+        if (!Student::find($request->student_id) && !Subject::find($request->subject_id) ) {
+            return response()->json([
+                'message' => 'Estudiante o asignatura no encontrados',
             ], 404);
         }
 

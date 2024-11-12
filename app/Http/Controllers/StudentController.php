@@ -43,9 +43,9 @@ class StudentController extends Controller
     {
         $student = new Student;
 
-        $student->name = $request->input('name');
-        $student->surnames = $request->input('surnames');
-        $student->age = $request->input('age');
+        $student->name = $request->name;
+        $student->surnames = $request->surnames;
+        $student->age = $request->age;
 
         $student->save();
 
