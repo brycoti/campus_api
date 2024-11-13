@@ -32,10 +32,11 @@ Route::controller(MarkController::class)->group(function () {
     Route::get('marks', 'index');
     Route::get('mark/{mark}', 'show');
     Route::post('mark','store');
+    Route::put('mark/{mark}', 'update');
+    Route::delete('mark/{mark}', 'destroy');
+
     Route::get('marksAvgByStudent/{student}',  'getAvgMarksByStudent');
     Route::get('marksByStudent/{student}', 'getMarksByStudent');
     Route::get('allMarksAvg', 'getAllAvgMarks');
     Route::get('marksAvgBySubject/{subject}', 'getAvgMarksBySubject');
-    Route::put('mark/{mark}', 'update');
-    Route::delete('mark/{mark}', 'destroy');
 });
